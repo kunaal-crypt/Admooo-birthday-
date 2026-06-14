@@ -1,0 +1,1243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Happy Birthday Ishika ✨</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+overflow:hidden;
+font-family:'Poppins',sans-serif;
+height:100vh;
+background:#090114;
+}
+
+/* GALAXY BACKGROUND */
+
+.background{
+position:fixed;
+width:100%;
+height:100%;
+background:
+linear-gradient(
+135deg,
+#12001f,
+#280041,
+#420066,
+#5b008f,
+#8a2be2
+);
+background-size:400% 400%;
+animation:gradientMove 15s ease infinite;
+z-index:-5;
+}
+
+@keyframes gradientMove{
+
+0%{
+background-position:0% 50%;
+}
+
+50%{
+background-position:100% 50%;
+}
+
+100%{
+background-position:0% 50%;
+}
+
+}
+
+.stars{
+position:absolute;
+width:100%;
+height:100%;
+overflow:hidden;
+}
+
+.star{
+position:absolute;
+width:3px;
+height:3px;
+background:white;
+border-radius:50%;
+animation:twinkle 2s infinite;
+}
+
+@keyframes twinkle{
+
+0%,100%{
+opacity:.2;
+}
+
+50%{
+opacity:1;
+}
+
+}
+
+.center{
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+
+/* BOOK */
+
+.book{
+width:380px;
+height:560px;
+position:relative;
+perspective:2500px;
+}
+
+.page{
+position:absolute;
+width:100%;
+height:100%;
+border-radius:25px;
+transform-origin:left;
+transition:1.3s;
+backface-visibility:hidden;
+overflow:hidden;
+box-shadow:
+0 0 25px rgba(255,0,255,.5),
+0 0 70px rgba(180,0,255,.3);
+}
+
+.cover{
+cursor:pointer;
+background:
+linear-gradient(
+135deg,
+rgba(255,0,153,.85),
+rgba(138,43,226,.85)
+);
+
+backdrop-filter:blur(20px);
+
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+
+text-align:center;
+color:white;
+padding:30px;
+z-index:10;
+}
+
+.cover h1{
+font-family:'Great Vibes',cursive;
+font-size:65px;
+text-shadow:
+0 0 10px #fff,
+0 0 20px #ff00ff,
+0 0 40px #ff00ff;
+}
+
+.cover h2{
+font-size:32px;
+margin-top:10px;
+}
+
+.cover p{
+margin-top:20px;
+opacity:.9;
+font-size:15px;
+}
+
+.glow-btn{
+margin-top:30px;
+padding:12px 25px;
+border:none;
+border-radius:30px;
+background:white;
+color:#8a2be2;
+font-weight:700;
+font-size:16px;
+cursor:pointer;
+box-shadow:
+0 0 15px white,
+0 0 30px #ff00ff;
+}
+
+.inside{
+background:
+rgba(255,255,255,.08);
+
+backdrop-filter:blur(30px);
+
+color:white;
+padding:25px;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+text-align:center;
+opacity:0;
+pointer-events:none;
+}
+
+.book.open .cover{
+transform:rotateY(-165deg);
+}
+
+.book.open .inside{
+opacity:1;
+pointer-events:auto;
+}
+
+.inside h2{
+font-family:'Great Vibes',cursive;
+font-size:55px;
+margin-bottom:10px;
+}
+
+.inside p{
+opacity:.9;
+line-height:1.7;
+}
+
+.next-btn{
+margin-top:30px;
+padding:12px 24px;
+border:none;
+border-radius:30px;
+background:linear-gradient(
+45deg,
+#ff00ff,
+#8a2be2
+);
+
+color:white;
+cursor:pointer;
+font-weight:600;
+box-shadow:
+0 0 20px #ff00ff;
+}
+
+/* PARTICLES */
+
+.particle{
+position:absolute;
+border-radius:50%;
+pointer-events:none;
+animation:floatUp linear infinite;
+}
+
+@keyframes floatUp{
+
+from{
+transform:translateY(100vh);
+opacity:0;
+}
+
+30%{
+opacity:1;
+}
+
+to{
+transform:translateY(-120px);
+opacity:0;
+}
+
+}
+
+.hidden{
+display:none;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="background"></div>
+
+<div class="stars" id="stars"></div>
+
+<div class="center">
+
+<div class="book" id="book">
+
+<div class="page cover" id="cover">
+
+<h1>Happy Birthday</h1>
+
+<h2>Ishika ✨</h2>
+
+<p>
+A little surprise made specially for an amazing friend.
+</p>
+
+<button class="glow-btn">
+Tap To Open 💜
+</button>
+
+</div>
+
+<div class="page inside">
+
+<h2>Hello Ishika 🌸</h2>
+
+<p>
+Today is all about celebrating your smile,
+your kindness, and the wonderful person you are.
+</p>
+
+<button class="next-btn" id="page1">
+Continue ➜
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+const book =
+document.getElementById("book");
+
+document
+.getElementById("cover")
+.addEventListener("click",()=>{
+
+book.classList.add("open");
+
+});
+
+/* STARS */
+
+const stars =
+document.getElementById("stars");
+
+for(let i=0;i<120;i++){
+
+let s=document.createElement("div");
+
+s.className="star";
+
+s.style.left=
+Math.random()*100+"%";
+
+s.style.top=
+Math.random()*100+"%";
+
+s.style.animationDelay=
+Math.random()*3+"s";
+
+stars.appendChild(s);
+
+}
+
+/* FLOATING PARTICLES */
+
+for(let i=0;i<40;i++){
+
+let p=document.createElement("div");
+
+p.className="particle";
+
+p.style.width=
+Math.random()*8+4+"px";
+
+p.style.height=
+p.style.width;
+
+p.style.left=
+Math.random()*100+"vw";
+
+p.style.background=
+Math.random()>.5
+? "#ff4dff"
+: "#b266ff";
+
+p.style.animationDuration=
+Math.random()*8+8+"s";
+
+document.body.appendChild(p);
+
+}
+
+const cakePage = document.createElement("div");
+
+cakePage.className = "page inside hidden";
+
+cakePage.id = "cakePage";
+
+cakePage.innerHTML = `
+
+<h2 style="
+font-family:'Great Vibes',cursive;
+font-size:52px;
+margin-bottom:15px;">
+Make A Wish 🎂
+</h2>
+
+<p style="
+max-width:280px;
+margin-bottom:25px;">
+Before we continue,
+light the candles and make a birthday wish.
+</p>
+
+<div id="cakeWrap">
+
+<div class="cake">
+
+<div class="cake-top"></div>
+
+<div class="cake-body"></div>
+
+<div class="candle candle1">
+<div class="flame"></div>
+</div>
+
+<div class="candle candle2">
+<div class="flame"></div>
+</div>
+
+<div class="candle candle3">
+<div class="flame"></div>
+</div>
+
+</div>
+
+</div>
+
+<button class="next-btn" id="lightBtn">
+Light Candles 🕯️
+</button>
+
+`;
+
+book.appendChild(cakePage);
+
+/* OPEN PAGE 2 */
+
+document
+.getElementById("page1")
+.addEventListener("click",()=>{
+
+document
+.querySelector(".inside")
+.classList.add("hidden");
+
+cakePage.classList.remove("hidden");
+
+});
+
+/* CAKE CSS */
+
+const cakeStyle = document.createElement("style");
+
+cakeStyle.innerHTML = `
+
+#cakeWrap{
+margin:20px 0;
+}
+
+.cake{
+position:relative;
+width:180px;
+height:180px;
+margin:auto;
+}
+
+.cake-body{
+position:absolute;
+bottom:0;
+width:180px;
+height:100px;
+background:
+linear-gradient(
+45deg,
+#ff6ec7,
+#c471ff
+);
+border-radius:15px;
+box-shadow:
+0 0 20px #ff4dff;
+}
+
+.cake-top{
+position:absolute;
+bottom:90px;
+width:180px;
+height:30px;
+background:#fff;
+border-radius:20px;
+}
+
+.candle{
+position:absolute;
+width:12px;
+height:45px;
+background:white;
+top:20px;
+border-radius:6px;
+}
+
+.candle1{
+left:35px;
+}
+
+.candle2{
+left:84px;
+}
+
+.candle3{
+left:133px;
+}
+
+.flame{
+position:absolute;
+top:-18px;
+left:-1px;
+width:14px;
+height:20px;
+background:orange;
+border-radius:50%;
+opacity:0;
+box-shadow:
+0 0 20px orange,
+0 0 40px yellow;
+}
+
+.lit{
+opacity:1 !important;
+animation:flicker .2s infinite alternate;
+}
+
+@keyframes flicker{
+
+from{
+transform:scale(1);
+}
+
+to{
+transform:scale(1.15);
+}
+
+}
+
+`;
+
+document.head.appendChild(cakeStyle);
+
+/* LIGHT CANDLES */
+
+let candlesLit = false;
+
+document
+.getElementById("lightBtn")
+.addEventListener("click",()=>{
+
+if(candlesLit) return;
+
+candlesLit = true;
+
+document
+.querySelectorAll(".flame")
+.forEach(f=>{
+
+f.classList.add("lit");
+
+});
+
+document
+.getElementById("lightBtn")
+.innerHTML =
+"Continue 💜";
+
+/* LETTER PAGE AFTER 2 SEC */
+
+setTimeout(()=>{
+
+cakePage.classList.add("hidden");
+
+showLetterPage();
+
+},2000);
+
+});
+
+/* ---------- LETTER PAGE ---------- */
+
+function showLetterPage(){
+
+const letterPage =
+document.createElement("div");
+
+letterPage.className =
+"page inside";
+
+letterPage.id =
+"letterPage";
+
+letterPage.innerHTML = `
+
+<h2>For Ishika 💜</h2>
+
+<div style="
+max-width:290px;
+line-height:1.9;
+font-size:15px;
+margin-top:10px;">
+
+<p>
+Happy Birthday, Ishika! 🎂✨
+</p>
+
+<p>
+Wishing you a year filled with happiness,
+success and unforgettable memories.
+</p>
+
+<p>
+Thank you for being such a genuine friend
+and always bringing positive energy wherever you go.
+</p>
+
+<p>
+Your kindness, dedication and support
+mean a lot to everyone around you.
+</p>
+
+<p>
+May every goal you work towards become
+an achievement and every day bring a reason to smile.
+</p>
+
+<p>
+Enjoy your special day to the fullest —
+you truly deserve all the happiness in the world. 💜
+</p>
+
+</div>
+
+<button class="next-btn" id="toFinal">
+Final Surprise 🎉
+</button>
+
+`;
+
+book.appendChild(letterPage);
+
+document
+.getElementById("toFinal")
+.addEventListener("click",()=>{
+
+letterPage.classList.add("hidden");
+
+launchFinalPage();
+
+});
+
+}
+
+function launchFinalPage(){
+
+const finalPage =
+document.createElement("div");
+
+finalPage.className =
+"page inside";
+
+finalPage.id =
+"finalPage";
+
+finalPage.innerHTML = `
+
+<h1 id="finalTitle">
+🎉 HAPPY BIRTHDAY 🎉
+</h1>
+
+<h2 id="nameGlow">
+Ishika 💜
+</h2>
+
+<p class="celebrateText">
+May your day be filled with laughter,
+beautiful memories,
+success, happiness,
+and countless reasons to smile.
+✨🌸🎂🎊
+</p>
+
+<div class="actionRow">
+
+<button id="fireBtn" class="next-btn">
+Launch Fireworks 🎆
+</button>
+
+<button id="confettiBtn" class="next-btn">
+Confetti 🎊
+</button>
+
+</div>
+
+<div class="musicBox">
+
+🎵 Birthday Vibes
+
+<br><br>
+
+<button id="musicBtn"
+class="next-btn">
+Play Music UI
+</button>
+
+</div>
+
+`;
+
+book.appendChild(finalPage);
+
+startFloatingHearts();
+
+}
+
+/* ---------- FINAL PAGE CSS ---------- */
+
+const finalStyle =
+document.createElement("style");
+
+finalStyle.innerHTML = `
+
+#finalTitle{
+
+font-size:34px;
+
+font-weight:700;
+
+text-align:center;
+
+color:white;
+
+text-shadow:
+0 0 10px white,
+0 0 25px #ff00ff,
+0 0 60px #ff00ff;
+
+animation:pulseGlow 2s infinite;
+
+}
+
+#nameGlow{
+
+font-family:'Great Vibes',cursive;
+
+font-size:70px;
+
+margin-top:10px;
+
+color:#ffd4ff;
+
+text-shadow:
+0 0 10px white,
+0 0 20px #ff4dff,
+0 0 40px #ff4dff,
+0 0 80px #ff4dff;
+
+}
+
+.celebrateText{
+
+margin-top:15px;
+
+max-width:290px;
+
+line-height:1.8;
+
+font-size:15px;
+
+}
+
+.actionRow{
+
+display:flex;
+
+gap:12px;
+
+margin-top:25px;
+
+flex-wrap:wrap;
+
+justify-content:center;
+
+}
+
+.musicBox{
+
+margin-top:25px;
+
+padding:15px;
+
+border-radius:18px;
+
+background:
+rgba(255,255,255,.08);
+
+backdrop-filter:blur(20px);
+
+}
+
+@keyframes pulseGlow{
+
+0%{
+transform:scale(1);
+}
+
+50%{
+transform:scale(1.05);
+}
+
+100%{
+transform:scale(1);
+}
+
+}
+
+.heart{
+
+position:fixed;
+
+font-size:20px;
+
+pointer-events:none;
+
+animation:heartFloat linear forwards;
+
+z-index:999;
+
+}
+
+@keyframes heartFloat{
+
+0%{
+
+opacity:0;
+
+transform:
+translateY(0)
+scale(.5);
+
+}
+
+20%{
+
+opacity:1;
+
+}
+
+100%{
+
+opacity:0;
+
+transform:
+translateY(-800px)
+scale(1.4);
+
+}
+
+}
+
+.fireParticle{
+
+position:fixed;
+
+width:8px;
+
+height:8px;
+
+border-radius:50%;
+
+pointer-events:none;
+
+z-index:9999;
+
+}
+
+`;
+
+document.head.appendChild(finalStyle);
+
+/* ---------- HEARTS ---------- */
+
+function startFloatingHearts(){
+
+setInterval(()=>{
+
+const heart =
+document.createElement("div");
+
+heart.className =
+"heart";
+
+heart.innerHTML =
+Math.random()>.5
+? "💜"
+: "✨";
+
+heart.style.left =
+Math.random()*100+"vw";
+
+heart.style.bottom =
+"-30px";
+
+heart.style.animationDuration =
+(Math.random()*4+4)+"s";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+
+heart.remove();
+
+},8000);
+
+},350);
+
+}
+
+/* ---------- FIREWORKS ---------- */
+
+document.addEventListener("click",(e)=>{
+
+if(
+e.target &&
+e.target.id==="fireBtn"
+){
+
+launchFireworks();
+
+}
+
+});
+
+/* FIREWORK FUNCTION */
+
+function launchFireworks(){
+
+for(let i=0;i<180;i++){
+
+const p =
+document.createElement("div");
+
+p.className =
+"fireParticle";
+
+p.style.left =
+(window.innerWidth/2)+"px";
+
+p.style.top =
+(window.innerHeight/2)+"px";
+
+p.style.background =
+`hsl(${Math.random()*360},
+100%,
+60%)`;
+
+const x =
+(Math.random()-0.5)*900;
+
+const y =
+(Math.random()-0.5)*900;
+
+p.animate([
+
+{
+transform:
+"translate(0,0) scale(1)",
+opacity:1
+},
+
+{
+transform:
+`translate(${x}px,${y}px) scale(0)`,
+opacity:0
+}
+
+],{
+
+duration:1800,
+
+easing:"ease-out"
+
+});
+
+document.body.appendChild(p);
+
+setTimeout(()=>{
+
+p.remove();
+
+},1800);
+
+}
+
+}
+
+/* ---------- CONFETTI ---------- */
+
+document.addEventListener("click",(e)=>{
+
+if(
+e.target &&
+e.target.id==="confettiBtn"
+){
+
+launchConfetti();
+
+}
+
+});
+
+function launchConfetti(){
+
+for(let i=0;i<250;i++){
+
+const c =
+document.createElement("div");
+
+c.style.position =
+"fixed";
+
+c.style.width =
+"10px";
+
+c.style.height =
+"16px";
+
+c.style.left =
+Math.random()*100+"vw";
+
+c.style.top =
+"-20px";
+
+c.style.background =
+`hsl(${Math.random()*360},
+100%,
+60%)`;
+
+c.style.zIndex =
+9999;
+
+document.body.appendChild(c);
+
+c.animate([
+
+{
+transform:
+"translateY(0)"
+},
+
+{
+transform:
+`translateY(${window.innerHeight+100}px)
+rotate(720deg)`
+}
+
+],{
+
+duration:
+Math.random()*2500+2500,
+
+easing:"linear"
+
+});
+
+setTimeout(()=>{
+
+c.remove();
+
+},5500);
+
+}
+
+}
+
+/* ---------- MUSIC BUTTON UI ---------- */
+
+document.addEventListener("click",(e)=>{
+
+if(
+e.target &&
+e.target.id==="musicBtn"
+){
+
+e.target.innerHTML =
+"🎵 Music Ready";
+
+alert(
+"Upload a birthday song later and connect it here 🎶"
+);
+
+}
+
+});
+
+const originalLaunchFinalPage =
+launchFinalPage;
+
+launchFinalPage = function(){
+
+originalLaunchFinalPage();
+
+setTimeout(()=>{
+
+launchFireworks();
+
+},800);
+
+setTimeout(()=>{
+
+launchConfetti();
+
+},1500);
+
+};
+
+/* ---------- EXTRA SPARKLES ---------- */
+
+setInterval(()=>{
+
+const spark =
+document.createElement("div");
+
+spark.innerHTML =
+Math.random()>.5 ? "✨" : "⭐";
+
+spark.style.position =
+"fixed";
+
+spark.style.left =
+Math.random()*100+"vw";
+
+spark.style.top =
+Math.random()*100+"vh";
+
+spark.style.fontSize =
+(Math.random()*12+12)+"px";
+
+spark.style.opacity =
+".8";
+
+spark.style.pointerEvents =
+"none";
+
+spark.style.zIndex =
+"999";
+
+document.body.appendChild(spark);
+
+spark.animate([
+
+{
+opacity:0,
+transform:"scale(.5)"
+},
+
+{
+opacity:1,
+transform:"scale(1.2)"
+},
+
+{
+opacity:0,
+transform:"scale(.5)"
+}
+
+],{
+
+duration:2500
+
+});
+
+setTimeout(()=>{
+
+spark.remove();
+
+},2500);
+
+},500);
+
+/* ---------- MOBILE OPTIMIZATION ---------- */
+
+const responsiveStyle =
+document.createElement("style");
+
+responsiveStyle.innerHTML = `
+
+@media(max-width:480px){
+
+.book{
+
+width:92vw;
+
+height:78vh;
+
+}
+
+.cover h1{
+
+font-size:52px;
+
+}
+
+.cover h2{
+
+font-size:26px;
+
+}
+
+.inside h2{
+
+font-size:42px;
+
+}
+
+#nameGlow{
+
+font-size:58px;
+
+}
+
+.next-btn{
+
+font-size:14px;
+
+padding:11px 18px;
+
+}
+
+}
+
+`;
+
+document.head.appendChild(responsiveStyle);
+
+</script>
+
+</body>
+
+</html>
