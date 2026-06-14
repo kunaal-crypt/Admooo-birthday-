@@ -695,19 +695,6 @@ Confetti 🎊
 
 </div>
 
-<div class="musicBox">
-
-🎵 Birthday Vibes
-
-<br><br>
-
-<button id="musicBtn"
-class="next-btn">
-Play Music UI
-</button>
-
-</div>
-
 `;
 
 book.appendChild(finalPage);
@@ -783,21 +770,6 @@ margin-top:25px;
 flex-wrap:wrap;
 
 justify-content:center;
-
-}
-
-.musicBox{
-
-margin-top:25px;
-
-padding:15px;
-
-border-radius:18px;
-
-background:
-rgba(255,255,255,.08);
-
-backdrop-filter:blur(20px);
 
 }
 
@@ -1077,24 +1049,6 @@ c.remove();
 }
 
 /* ---------- MUSIC BUTTON UI ---------- */
-
-document.addEventListener("click",(e)=>{
-
-if(
-e.target &&
-e.target.id==="musicBtn"
-){
-
-e.target.innerHTML =
-"🎵 Music Ready";
-
-alert(
-"Upload a birthday song later and connect it here 🎶"
-);
-
-}
-
-});
 
 const originalLaunchFinalPage =
 launchFinalPage;
